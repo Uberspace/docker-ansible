@@ -1,6 +1,6 @@
 # Uberspace Ansible Dockerimage
 
-Ansible provisioner with added GCE Python modules.
+Ansible provisioner including GCE Python modules, git and rsync.
 
 ## Credits
 
