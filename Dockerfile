@@ -8,6 +8,9 @@ RUN pip install ansible~=2.1.0
 
 RUN yum install git openssl -y
 
+RUN yum install https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm -y
+RUN vagrant plugin install vagrant-google
+
 # required by http://docs.ansible.com/ansible/gce_module.html
 RUN yum install python-libcloud -y
 # required by http://docs.ansible.com/ansible/synchronize_module.html
