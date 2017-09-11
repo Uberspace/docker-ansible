@@ -1,17 +1,20 @@
 FROM centos:centos7
 
-RUN yum install epel-release -y
-RUN yum install python-pip python-devel -y
-RUN yum install gcc libffi-devel openssl-devel -y
-RUN yum install bind-utils -y
+RUN yum install -y epel-release
+RUN yum install -y \
+    python-pip \
+    python-devel \
+    gcc \
+    libffi-devel \
+    openssl-devel \
+    bind-utils \
+    git \
+    openssl \
+    python-libcloud \
+    rsync
+
 RUN pip install ansible~=2.1.0
-
-RUN yum install git openssl -y
-
-RUN yum install https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm -y
+RUN yum install -y https://releases.hashicorp.com/vagrant/2.0.0/vagrant_2.0.0_x86_64.rpm
 RUN vagrant plugin install vagrant-google
 
-# required by http://docs.ansible.com/ansible/gce_module.html
-RUN yum install python-libcloud -y
-# required by http://docs.ansible.com/ansible/synchronize_module.html
-RUN yum install rsync -y
+ENTRYPOINT ["ansible"]
