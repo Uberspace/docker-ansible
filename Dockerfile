@@ -1,20 +1,23 @@
 FROM centos:centos7
+ARG ANSIBLE_VERSION=2.4
+ARG VAGRANT_VERSION=2.0.4
 
-RUN yum install -y epel-release
-RUN yum install -y \
-    python-pip \
-    python-devel \
-    gcc \
-    libffi-devel \
-    openssl-devel \
-    bind-utils \
-    git \
-    openssl \
-    python-libcloud \
-    rsync
+RUN yum install -y epel-release \
+	&& yum upgrade -y \
+	&& yum install -y \
+		bind-utils \
+		gcc \
+		git \
+		libffi-devel \
+		openssl \
+		openssl-devel \
+		python-devel \
+		python-libcloud \
+		python-pip \
+		rsync
 
-RUN pip install 'requests[security]' ansible~=2.4.0
-RUN yum install -y https://releases.hashicorp.com/vagrant/2.0.4/vagrant_2.0.4_x86_64.rpm
+RUN pip install 'requests[security]' ansible~=$ANSIBLE_VERSION
+RUN yum install -y "https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_${VAGRANT_VERSION}_x86_64.rpm"
 RUN vagrant plugin install vagrant-google
 
 CMD ansible
