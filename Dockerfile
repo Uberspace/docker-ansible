@@ -22,4 +22,5 @@ RUN pip install --upgrade pip \
 	&& yum install -y "https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_${VAGRANT_VERSION}_x86_64.rpm" \
 	&& vagrant plugin install vagrant-google --plugin-version $VAGRANT_GOOGLE_VERSION
 
-CMD ansible
+ENTRYPOINT ["/usr/bin/ansible"]
+CMD ["--version"]
