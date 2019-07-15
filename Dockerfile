@@ -16,8 +16,9 @@ RUN yum install -y epel-release \
 		python-pip \
 		rsync
 
-RUN pip install 'requests[security]' ansible~=$ANSIBLE_VERSION
-RUN yum install -y "https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_${VAGRANT_VERSION}_x86_64.rpm"
-RUN vagrant plugin install vagrant-google
+RUN pip install --upgrade pip \
+	&& pip install 'requests[security]' ansible~=$ANSIBLE_VERSION \
+	&& yum install -y "https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_${VAGRANT_VERSION}_x86_64.rpm" \
+	&& vagrant plugin install vagrant-google
 
 CMD ansible
