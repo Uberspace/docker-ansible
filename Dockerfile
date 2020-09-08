@@ -16,6 +16,7 @@ RUN yum install -y epel-release \
 		python-libcloud \
 		python-pip \
 		python-setuptools \
+		python2-psutil \
 		rsync
 
 RUN pip install --upgrade pip \
