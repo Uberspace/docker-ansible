@@ -22,6 +22,7 @@ RUN python3 -m pip install --upgrade pip \
 	&& python3 -m pip install apache-libcloud \
 	&& python3 -m pip install 'requests[security]' ansible==$ANSIBLE_VERSION \
 	&& yum install -y "https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_${VAGRANT_VERSION}_x86_64.rpm" \
+        && vagrant plugin install nokogiri --plugin-version 1.10.10 \
 	&& vagrant plugin install vagrant-google --plugin-version $VAGRANT_GOOGLE_VERSION
 
 ENTRYPOINT ["/usr/bin/ansible"]
