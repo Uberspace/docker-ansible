@@ -1,0 +1,21 @@
+# see https://git.uberspace.is/uberspace/uberspace7/-/blob/master/requirements.txt
+ansible==2.9.*
+
+# Compat - pin some requirements for Python 2 compatiblility
+ruamel.yaml==0.16.10
+ruamel.yaml.clib==0.2.0
+ruamel.ordereddict==0.4.14
+
+# Extra - CI requirements
+# DNS for Ansible lookups
+dnspython==1.16.*
+# U7 - suppress warnings about filters/servicestatus.py
+psutil==5.7.2
+# Not sure why this is/was required in the image
+requests[security]==2.22.*
+# U7 - suppress warnings about filters/password_strength.py
+zxcvbn==4.4.28
+# U7 - used for the CI jobs that build test VMs
+apache-libcloud==2.2.0
+# DNS for ubrspc.de
+cloudflare==1.5.1
