@@ -5,6 +5,8 @@ ARG VAGRANT_VERSION=2.2.19
 ARG VAGRANT_GOOGLE_VERSION=2.6.0
 
 RUN yum install -y epel-release \
+	&& yum-config-manager --add-repo \
+		https://repo.corona.uberspace.de/uberspace.repo \
 	&& yum upgrade -y \
 	&& yum install -y \
 		bind-utils \
@@ -17,6 +19,7 @@ RUN yum install -y epel-release \
 		python-pip \
 		python-setuptools \
 		rsync \
+		ubrspc_python39 \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN yum install -y \
